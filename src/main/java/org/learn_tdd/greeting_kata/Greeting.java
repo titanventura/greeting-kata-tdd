@@ -3,7 +3,11 @@ package org.learn_tdd.greeting_kata;
 public class Greeting {
     public String greet(String... names) {
 
-        if (names.length > 1 && names.length == 2) return greetTwoNames(names);
+        if (names.length > 1){
+            if(names.length == 2)
+                return greetTwoNames(names);
+            return greetNames(names);
+        }
 
         String name = names[0];
 
@@ -14,17 +18,20 @@ public class Greeting {
         return String.format("Hello, %s.", name);
     }
 
-    private String greetTwoNames(String[] names) {
+    private String greetNames(String[] names) {
+
         StringBuilder builder = new StringBuilder("");
-//
-//        for (int i = 0; i < names.length; i++) {
-//            if (i == names.length - 1)
-//                builder.append(String.format("and %s", names[i]));
-//            else
-//                builder.append(String.format("%s ", names[i]));
-//        }
-//
-//        return String.format("Hello, %s.", builder.toString());
+        for (int i = 0; i < names.length; i++) {
+            if (i == names.length - 1)
+                builder.append(String.format("and %s", names[i]));
+            else
+                builder.append(String.format("%s, ", names[i]));
+        }
+
+        return String.format("Hello, %s.", builder.toString());
+    }
+
+    private String greetTwoNames(String[] names) {
 
         String name1 = names[0];
         String name2 = names[1];

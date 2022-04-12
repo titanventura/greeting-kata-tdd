@@ -40,13 +40,26 @@ public class GreetingTest {
     }
 
     @Test
-    void shouldHandleVarArgs() {
+    void shouldHandleTwoVarArgs() {
         Greeting greeting = new Greeting();
         String john = "John";
         String doe = "Doe";
         String expected = "Hello, John and Doe.";
 
         String result = greeting.greet(john, doe);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void shouldHandleMoreThanTwoVarArgs() {
+        Greeting greeting = new Greeting();
+        String john = "John";
+        String doe = "Doe";
+        String jane = "Jane";
+        String expected = "Hello, John, Doe, and Jane.";
+
+        String result = greeting.greet(john, doe, jane);
 
         assertEquals(expected, result);
     }
