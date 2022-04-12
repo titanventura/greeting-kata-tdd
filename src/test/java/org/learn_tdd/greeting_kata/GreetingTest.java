@@ -26,4 +26,16 @@ public class GreetingTest {
 
         assertEquals(expected, result);
     }
+
+
+    @Test
+    void shouldHandleShouting() {
+        Greeting greeting = new Greeting();
+        String name = "JERRY";
+        String expected = "HELLO, JERRY!";
+
+        String result = greeting.greet(name);
+
+        assertEquals(expected, result);
+    }
 }
