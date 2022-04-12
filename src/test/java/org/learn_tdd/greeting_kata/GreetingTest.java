@@ -38,4 +38,16 @@ public class GreetingTest {
 
         assertEquals(expected, result);
     }
+
+    @Test
+    void shouldHandleVarArgs() {
+        Greeting greeting = new Greeting();
+        String john = "John";
+        String doe = "Doe";
+        String expected = "Hello, John and Doe.";
+
+        String result = greeting.greet(john, doe);
+
+        assertEquals(expected, result);
+    }
 }
