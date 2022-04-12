@@ -15,4 +15,15 @@ public class GreetingTest {
 
         assertEquals(expected, result);
     }
+
+    @Test
+    void shouldGreetEvenWhenNameIsNull() {
+        Greeting greeting = new Greeting();
+        String name = null;
+        String expected = "Hello, my friend.";
+
+        String result = greeting.greet(name);
+
+        assertEquals(expected, result);
+    }
 }
