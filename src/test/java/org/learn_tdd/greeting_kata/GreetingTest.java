@@ -76,4 +76,28 @@ public class GreetingTest {
 
         assertEquals(expected, result);
     }
+
+    @Test
+    void shouldConsiderAsDifferentNamesWhenANameSeparatedByComma() {
+        Greeting greeting = new Greeting();
+        String amy = "Amy";
+        String charlotteAndDianne = "Charlotte, Dianne";
+        String expected = "Hello, Amy, Charlotte, and Dianne.";
+
+        String result = greeting.greet(amy, charlotteAndDianne);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void shouldConsiderCommaSeparatedNameAsSingleWhenEnclosedByQuotes() {
+        Greeting greeting = new Greeting();
+        String amy = "Amy";
+        String charlotteAndDianne = "\"Charlotte, Dianne\"";
+        String expected = "Hello, Amy and Charlotte, Dianne.";
+
+        String result = greeting.greet(amy, charlotteAndDianne);
+
+        assertEquals(expected, result);
+    }
 }
