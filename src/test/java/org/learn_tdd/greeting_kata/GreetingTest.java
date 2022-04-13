@@ -63,4 +63,17 @@ public class GreetingTest {
 
         assertEquals(expected, result);
     }
+
+    @Test
+    void shouldGreetSeparatelyWhenMixedTypeOfNamesArePassed() {
+        Greeting greeting = new Greeting();
+        String amy = "Amy";
+        String brian = "BRIAN";
+        String charlotte = "Charlotte";
+        String expected = "Hello, Amy and Charlotte. AND HELLO, BRIAN!";
+
+        String result = greeting.greet(amy, brian, charlotte);
+
+        assertEquals(expected, result);
+    }
 }
