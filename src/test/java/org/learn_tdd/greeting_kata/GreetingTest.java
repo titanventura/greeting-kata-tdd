@@ -29,7 +29,7 @@ public class GreetingTest {
 
 
     @Test
-    void shouldHandleShouting() {
+    void shouldGreetByShoutingWhenNameIsAllUpperCase() {
         Greeting greeting = new Greeting();
         String name = "JERRY";
         String expected = "HELLO, JERRY!";
@@ -40,7 +40,7 @@ public class GreetingTest {
     }
 
     @Test
-    void shouldHandleTwoVarArgs() {
+    void shouldGreetWithAndWhenTwoNamesArePassed() {
         Greeting greeting = new Greeting();
         String john = "John";
         String doe = "Doe";
@@ -52,7 +52,7 @@ public class GreetingTest {
     }
 
     @Test
-    void shouldHandleMoreThanTwoVarArgs() {
+    void shouldGreetWithCommaAndClosingAndWhenMultipleNamesArePassed() {
         Greeting greeting = new Greeting();
         String john = "John";
         String doe = "Doe";
