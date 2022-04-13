@@ -9,10 +9,13 @@ public class Greeting {
 
 
     public String greet(String... names) {
+
+        names = convertNullNames(names);
+
         StringBuilder result = new StringBuilder();
 
-        String[] lowerCaseNames = Arrays.stream(names).filter(name -> !isAllUpperCase(name)).toArray(String[]::new);
-        String[] upperCaseNames = Arrays.stream(names).filter(this::isAllUpperCase).toArray(String[]::new);
+        String[] lowerCaseNames = filterLowerCaseNames(names);
+        String[] upperCaseNames = filterUpperCaseNames(names);
 
         if (lowerCaseNames.length > 0)
             result.append(String.format(LOWER_CASE_GREET_FORMAT, greetNames(lowerCaseNames)));
@@ -23,13 +26,12 @@ public class Greeting {
             result.append(String.format(UPPER_CASE_GREET_FORMAT, greetNames(upperCaseNames)));
         }
 
-
         return String.valueOf(result);
     }
 
+
     private String greetNames(String[] names) {
         if (names.length == 1) {
-            if (names[0] == null) return "my friend";
             return names[0];
         }
 
@@ -46,6 +48,19 @@ public class Greeting {
         }
 
         return String.valueOf(result);
+    }
+
+
+    private String[] filterUpperCaseNames(String[] names) {
+        return Arrays.stream(names).filter(this::isAllUpperCase).toArray(String[]::new);
+    }
+
+    private String[] filterLowerCaseNames(String[] names) {
+        return Arrays.stream(names).filter(name -> !isAllUpperCase(name)).toArray(String[]::new);
+    }
+
+    private String[] convertNullNames(String[] names) {
+        return Arrays.stream(names).map(name -> name == null ? "my friend" : name).toArray(String[]::new);
     }
 
     private boolean isAllUpperCase(String name) {
